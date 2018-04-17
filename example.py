@@ -1,8 +1,3 @@
-# imperial-metric-converter
-a simple converter to convert metric to imperial and imperial to metric
-
-##Usage
-```py
 import convert
 import sys
 
@@ -10,4 +5,3 @@ import sys
 stuff = convert.convert(sys.argv[1], sys.argv[2], sys.argv[3])
 print("converted {}{} to {}{}".format(sys.argv[1], sys.argv[2], stuff, sys.argv[3]))
 #converted 10ft to 3.048m
-```
