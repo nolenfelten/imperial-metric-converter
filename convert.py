@@ -8,27 +8,24 @@ mass_i_conver = [2204.62, 16]
 
 def m_to_i(measure, symbol, conversion):
     index = m_values.index(symbol)
-    for value in range(0, index+1):
-        measure = measure * 10
+    measure *= (100**(index)) #convert to milimiters
+    measure /= 25.4 #convert to inches
 
-    measure = measure / 25.4
-
+    #convert to requested imperial
     index = i_values.index(conversion)
     for value in i_conver[index:]:
-        measure = measure / value
+        measure /= value
 
     return measure
 
 def i_to_m(measure, symbol, conversion):
     index = i_values.index(symbol)
     for value in i_conver[index:]:
-        measure = measure * value
+        measure *= value
 
-    measure = measure * 25.4
-
+    measure *= 25.4 # converter to milimiters
     index = m_values.index(conversion)
-    for value in range(0, index+1):
-        measure = measure / 10
+    measure /= (100**(index))#convert to requested metric
 
     return measure
 
@@ -47,15 +44,13 @@ def mass_i_to_m(measure, symbol, conversion):
     measure = measure * 28349.5
 
     index = mass_m_values.index(conversion)
-    for value in range(0, index):
-        measure = measure / 10
+    measure /= (100**(index))
 
     return measure
 
 def mass_m_to_i(measure, symbol, conversion):
     index = mass_m_values.index(symbol)
-    for value in range(0, index):
-        measure = measure * 10
+    measure *= (100**(index))
 
     measure = measure / 28349.5
 
