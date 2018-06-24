@@ -37,23 +37,23 @@ def temp(f=None, c=None):
         return (f - 32) * 5/9
 
 def mass_i_to_m(measure, symbol, conversion):
+    #convert to oz
     index = mass_i_values.index(symbol)
     for value in mass_i_conver[index:]:
         measure = measure * value
 
-    measure = measure * 28349.5
-
+    measure = measure * 28349.5 #convert to miligrams
     index = mass_m_values.index(conversion)
-    measure /= (100**(index))
+    measure /= (100**(index+1)) #convert to requested imperial
 
     return measure
 
 def mass_m_to_i(measure, symbol, conversion):
     index = mass_m_values.index(symbol)
-    measure *= (100**(index))
+    measure *= (100**(index+1)) # convert to miligrams
+    measure = measure / 28349.5 #convert to oz
 
-    measure = measure / 28349.5
-
+    #convert to requested imperial
     index = mass_i_values.index(conversion)
     for value in mass_i_conver[index:]:
         measure = measure / value
